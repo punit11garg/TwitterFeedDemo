@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import io.restassured.response.Response;
@@ -14,6 +15,7 @@ import utility.RestAssuredUtil;
 public class TestGetMethod extends BaseTest {
 	ValidateResponse vr = new ValidateResponse();
 	int totalPostCount;
+	int totalPost;
 	
 	@BeforeMethod
 	public void getTotalPostsCount() {
@@ -24,56 +26,42 @@ public class TestGetMethod extends BaseTest {
 		HashMap<String, Object> postsMap = RestAssuredUtil.getJsonPath(res).get("posts");
 		List<Object> itemList = (List<Object>) postsMap.get("items");
 		totalPostCount = itemList.size();
+		totalPost = totalPostCount + 50;
 	}
 
-	@Test(priority = 1, enabled = true)
-	public void testTweetCount() {
+	@Test(priority = 1, enabled = true, dataProvider = "test-data")
+	public void testTweetCount(String per, int count) {
 		
-		request.queryParam("per", 1);
+		request.queryParam(per, count);
 		Response res = RestAssuredUtil.getResponse(request);
-		ValidateResponse.isPostCountExpected(res, 1, totalPostCount);
-		
-		request.queryParam("per", 0);
-		res = RestAssuredUtil.getResponse(request);
-		ValidateResponse.isPostCountExpected(res, 0, totalPostCount);
-		
-		request.queryParam("per", 120);	
-		res = RestAssuredUtil.getResponse(request);
-		ValidateResponse.isPostCountExpected(res, 120, totalPostCount);
-		
-		
-		request.queryParam("per", -1);	
-		res = RestAssuredUtil.getResponse(request);
-		ValidateResponse.isPostCountExpected(res, -1, totalPostCount);
+		ValidateResponse.isPostCountExpected(res, count, totalPostCount);
 		
 	}
 	
-	@Test(priority = 1, enabled=false)
-	public void testTweetCountPerPage() {
-		int totalPost = totalPostCount;
-		
-		request.queryParam("page", 1);
+	@DataProvider(name = "test-data")
+	public Object[][] dataProvFunc(){
+		return new Object[][] {
+			{"per", 1}, {"per", 0}, {"per", -1}, {"per", totalPost}
+		};
+	}
+	
+	@Test(priority = 1, dataProvider = "test-data1")
+	public void testTweetCountPerPage(String s1, int c1, String s2, int c2) {
+		request.queryParam(s1, c1);
+		request.queryParam(s2, c2);
 		Response res = RestAssuredUtil.getResponse(request);
-		ValidateResponse.isCurrentPageExpected(res, 1, 0, totalPostCount);
-		
-		request.queryParam("per", 1);
-		request.queryParam("page", ++totalPost);
-		res = RestAssuredUtil.getResponse(request);
-		ValidateResponse.isCurrentPageExpected(res, totalPost, 1, totalPostCount);
-		
-//		request.queryParam("per", 0);
-//		res = RestAssuredUtil.getResponse(request);
-//		ValidateResponse.isPostCountExpected(res, 0, totalPostCount);
-//		
-//		request.queryParam("per", 120);	
-//		res = RestAssuredUtil.getResponse(request);
-//		ValidateResponse.isPostCountExpected(res, 120, totalPostCount);
-//		
-//		
-//		request.queryParam("per", -1);	
-//		res = RestAssuredUtil.getResponse(request);
-//		ValidateResponse.isPostCountExpected(res, -1, totalPostCount);
-		
+		ValidateResponse.isCurrentPageExpected(res, c2, c1, totalPostCount);
+
+	}
+	
+	
+	@DataProvider(name = "test-data1")
+	public Object[][] dataProvFunc1(){
+		int totalPost = totalPostCount + 50;
+		return new Object[][] {
+			{"per", 1, "page", 1}, {"per", 50, "page", 2}, {"per", 50, "page", 10000},  {"per", 0, "page", 20},
+			{"per", 0, "page", 0}, {"per", -1, "page", -1}
+		};
 	}
 
 }
