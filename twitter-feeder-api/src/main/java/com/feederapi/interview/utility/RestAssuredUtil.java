@@ -1,18 +1,24 @@
-package utility;
+package com.feederapi.interview.utility;
 
 
 import static io.restassured.RestAssured.given;
 
+import java.io.IOException;
+
+import org.apache.log4j.Logger;
+
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
-import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
 public class RestAssuredUtil {
+	
+	static Logger log = Logger.getLogger(RestAssuredUtil.class.getName());
+	
 	// Sets Base URI
-	public static void setBaseURI() {
-		RestAssured.baseURI = "https://www.juicer.io/";
+	public static void setBaseURI() throws IOException {
+		RestAssured.baseURI = TestUtil.getProperty("baseUri");
 	}
 
 	// Sets base path
@@ -53,9 +59,4 @@ public class RestAssuredUtil {
 		return reqSpec.get();
 	}
 
-	// Returns JsonPath object
-	public static JsonPath getJsonPath(Response res) {
-		String json = res.asString();
-		return new JsonPath(json);
-	}
 }

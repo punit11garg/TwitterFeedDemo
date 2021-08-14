@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Test Suite">
+	<test thread-count="5" name="Public Api Get Test" verbose="2">
+		<classes>
+			<class name="com.feederapi.interview.get.TweetCountTest"></class>
+			<class name="com.feederapi.interview.get.TweetCountPageTest"></class>
+			<class name="com.feederapi.interview.get.TweetFilterTest"></class>
+		</classes>
+		<!-- <packages> -->
+		<!-- <package name="com.feederapi.interview.get" /> -->
+		<!-- </packages> -->
+	</test> <!-- Default test -->
+</suite> <!-- Default suite -->
