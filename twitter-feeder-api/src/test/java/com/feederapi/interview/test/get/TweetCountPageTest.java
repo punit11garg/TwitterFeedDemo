@@ -2,6 +2,7 @@ package com.feederapi.interview.test.get;
 
 import java.io.IOException;
 
+import org.apache.log4j.Logger;
 import org.json.JSONException;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -10,7 +11,14 @@ import com.feederapi.interview.test.util.*;
 import com.feederapi.interview.utility.Constants;
 import com.feederapi.interview.utility.RestAssuredUtil;
 
+/**
+ * Test Class to test per&page query params for get call.
+ * 
+ * @author PUNIT GARG
+ *
+ */
 public class TweetCountPageTest extends BaseTest {
+	static Logger log = Logger.getLogger(TweetCountTest.class.getName());
 
 	/**
 	 * This will test the number of tweets to be shown per page as well as the
@@ -27,6 +35,8 @@ public class TweetCountPageTest extends BaseTest {
 	@Test(dataProvider = "test-data", description = "Test the number of twits (max 100) to be displayed per page and the current page")
 	public void tweetCountAndPageTest(String queryParamPer, String value1, String queryParamPage, String value2)
 			throws NumberFormatException, JSONException {
+		log.info("Executing tweetCountAndPageTest for following test input: [{" + queryParamPer + ":" + value1 + ","
+				+ queryParamPage + ":" + value2 + "}]");
 		value1 = value1.equalsIgnoreCase("") ? "0" : value1;
 		value2 = value2.equalsIgnoreCase("") ? "1" : value2;
 		request.queryParam(queryParamPer, value1);
