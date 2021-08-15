@@ -103,6 +103,9 @@ public class ValidateResponse {
 	 */
 	public static void validateFilteredCount(Response response, String filterName) throws JSONException {
 		JSONObject JSONResponseBody = RestAssuredUtil.getJsonResponseBody(response);
+
+		//Verify the source. In this case, it will always be Twitter but should be checked dynamically
+		Assert.assertEquals(RestAssuredUtil.getSource(JSONResponseBody), Constants.FEED_SOURCE, "Feed Source is Twitter");
 		
 		//Posts count for any feed other than Twitter must be 0
 		if (filterName.toLowerCase().contains("twitter") || filterName.equalsIgnoreCase(""))
@@ -111,6 +114,7 @@ public class ValidateResponse {
 		else
 			Assert.assertEquals(RestAssuredUtil.getItemsLength(JSONResponseBody) >= 0, true,
 					"Number of posts for twitter feed should be >= 0");
+		
 	}
 
 	/**

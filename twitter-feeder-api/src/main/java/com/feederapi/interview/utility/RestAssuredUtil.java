@@ -96,4 +96,9 @@ public class RestAssuredUtil {
 	public static int getItemsLength(JSONObject JSONResponseBody) throws JSONException {
 		return JSONResponseBody.getJSONObject("posts").getJSONArray("items").length();
 	}
+	
+	public static String getSource(JSONObject JSONResponseBody) throws JSONException {
+		return JSONResponseBody.getJSONArray("sources").getJSONObject(0).getString("source");
+		
+	}
 }

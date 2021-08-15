@@ -13,5 +13,8 @@ public class Constants {
 	public static final String GET_PAGE_QUERY_PARAM = "page";
 	public static final String GET_FILTER_QUERY_PARAM = "filter";
 	public static final String GET_STARTING_AT_QUERY_PARAM = "starting_at";
+	
+	//Source for this test will alway be Twitter since only that feed is available
+	public static final String FEED_SOURCE = "Twitter";
 
 }
