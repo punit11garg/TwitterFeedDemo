@@ -1,5 +1,10 @@
 package com.feederapi.interview.utility;
 
+/**
+ * Constant class to store input file path and Get query param.
+ * @author PUNIT GARG
+ *
+ */
 public class Constants {
 	
 	public static final String INPUT_EXCEL_FILE_PATH = System.getProperty("user.dir") + "/src/test/resources/InputData.xlsx";
