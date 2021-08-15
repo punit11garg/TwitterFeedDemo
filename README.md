@@ -16,7 +16,7 @@
        2. [Maven](https://mkyong.com/maven/install-maven-on-mac-osx/)
 
 **Steps to execute test cases**
-1. Take the checkout of master branch into local machine.
-   1. In case not able to take checkout, download the zip file of code from **"Code > Download zip"** and unzip.
+1. Take the checkout of **"TwitterFeedDemo"** repo's master branch into local machine.
+   1. In case not able to take checkout, download the zip file from **"Code > Download zip"** and unzip.
 2. Open Terminal/Command Prompt and navigate to root directory (**"twitter-feed-api"**) of the downloaded code on local machine. Execute the following command to execute the test cases: **"mvn clean install test"**
 3. All test should pass and report can be accessed at **"twitter-feed-api/test-output/ExtentReport.html"**
