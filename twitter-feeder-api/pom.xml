@@ -44,18 +44,6 @@
 			<version>5.0.0</version>
 		</dependency>
 
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.apache.logging.log4j</groupId> -->
-<!-- 			<artifactId>log4j-api</artifactId> -->
-<!-- 			<version>2.14.1</version> -->
-<!-- 			<scope>test</scope> -->
-<!-- 		</dependency> -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.apache.logging.log4j</groupId> -->
-<!-- 			<artifactId>log4j-core</artifactId> -->
-<!-- 			<version>2.14.1</version> -->
-<!-- 		</dependency> -->
-
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
@@ -67,6 +55,13 @@
 			<groupId>org.json</groupId>
 			<artifactId>json</artifactId>
 			<version>20090211</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
+		<dependency>
+			<groupId>com.aventstack</groupId>
+			<artifactId>extentreports</artifactId>
+			<version>3.1.5</version>
 		</dependency>
 
 

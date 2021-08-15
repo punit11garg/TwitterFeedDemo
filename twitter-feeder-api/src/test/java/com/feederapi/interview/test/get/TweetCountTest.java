@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.json.JSONException;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -26,6 +27,13 @@ import io.restassured.response.Response;
 public class TweetCountTest extends BaseTest {
 
 	static Logger log = Logger.getLogger(TweetCountTest.class.getName());
+	
+	@BeforeClass
+	@Override
+	protected void setup() throws IOException, JSONException, URISyntaxException {
+		super.setup();
+		test = extent.createTest("tweetCountPerPageTest");
+	}
 
 	/**
 	 * This is to test the no. of tweets to be shown per page. JSON response will

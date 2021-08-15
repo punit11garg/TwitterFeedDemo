@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.json.JSONException;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -27,6 +28,13 @@ import io.restassured.response.Response;
 public class TweetFilterTest extends BaseTest {
 
 	static Logger log = Logger.getLogger(TweetFilterTest.class.getName());
+	
+	@BeforeClass
+	@Override
+	protected void setup() throws IOException, JSONException, URISyntaxException {
+		super.setup();
+		test = extent.createTest("tweetFilterTest");
+	}
 
 	/**
 	 * This is to test the no. of tweets to be shown per page. JSON response will
@@ -39,7 +47,7 @@ public class TweetFilterTest extends BaseTest {
 	 */
 	@Test(dataProvider = "test-data", description = "Test the filtering of response on social account feed basis.")
 	public void tweetFilterTest(Map<Object, Object> dataInputMap) throws JSONException {
-		log.info("Executing tweetCountAndPageTest for following test input: [{" + dataInputMap.keySet().toString() + ":" + dataInputMap.values().toString() + "}]");
+		log.info("Executing tweetFilterTest for following test input: [{" + dataInputMap.keySet().toString() + ":" + dataInputMap.values().toString() + "}]");
 		Response response = RestAssuredUtil.getResponse(RestAssuredUtil.setQueryParamsHashMap(request, dataInputMap));
 		ValidateResponse.validateResponseNew(response, dataInputMap);
 	}
