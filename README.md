@@ -6,7 +6,7 @@
 3. Implemented Surefire and Extent reports.
 4. Logging is done using log4j.
 
-**Prerequisite to execute the test cases** 
+**Prerequisite to execute the test cases**
 Java (8 or above), Maven must be installed and set in classpath on the machine before running this project.
 
 **Steps to execute test cases**
