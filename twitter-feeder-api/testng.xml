@@ -2,11 +2,6 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Test Suite">
 	<test thread-count="5" name="Public Api Get Test" verbose="2">
-		<!-- <classes> -->
-		<!-- <class name="com.feederapi.interview.test.get.TweetCountTest"></class> -->
-		<!-- <class name="com.feederapi.interview.test.get.TweetCountPageTest"></class> -->
-		<!-- <class name="com.feederapi.interview.test.get.TweetFilterTest"></class> -->
-		<!-- </classes> -->
 		<packages>
 			<package name="com.feederapi.interview.test.get" />
 		</packages>

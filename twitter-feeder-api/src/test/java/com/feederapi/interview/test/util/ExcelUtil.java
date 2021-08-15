@@ -2,10 +2,13 @@ package com.feederapi.interview.test.util;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DataFormatter;
-import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
@@ -23,49 +26,44 @@ public class ExcelUtil {
 
 	public static Workbook workbook;
 	public static Sheet worksheet;
+	static ClassLoader classLoader = ExcelUtil.class.getClassLoader();
+	
 
 	/**
 	 * Read the data and return as 2D object array to data provider methods
 	 * 
 	 * @author PUNIT GARG
-	 * @param fileName
 	 * @param sheetName
 	 * @return
 	 * @throws IOException
+	 * @throws URISyntaxException 
 	 */
-	public static Object[][] ReadVariant(String sheetName) throws IOException {
-		Workbook workbook = WorkbookFactory
-				.create(new File(Constants.INPUT_EXCEL_FILE_PATH));
-		DataFormatter formatter = new DataFormatter();
+	public static Object[][] dataSupplier(String sheetName) throws IOException, URISyntaxException {
+		URL resource = classLoader.getResource(Constants.INPUT_EXCEL_FILE_NAME);
+		
+		workbook = WorkbookFactory.create(new File(resource.toURI()));
 		worksheet = workbook.getSheet(sheetName);// get sheet from workbook
-		Row headerRow = worksheet.getRow(0); // get Row which start from 0
+		workbook.close();
+		
+		DataFormatter formatter = new DataFormatter();
+		
+		int lastRowNum = worksheet.getLastRowNum();
+		int lastCellNum = worksheet.getRow(0).getLastCellNum();
 
-		int rowCount = worksheet.getPhysicalNumberOfRows();// count number of Rows
-		int colCount = headerRow.getLastCellNum(); // get last ColNum
+		Object data[][] = new Object[lastRowNum][1]; // pass count data in array
 
-		Object data[][] = new Object[rowCount - 1][colCount]; // pass count data in array
-		int x = 0;
-
-		for (int i = 0; i < rowCount - 1; i++) // Loop work for Rows
+		for (int i = 0; i < lastRowNum; i++) // Loop work for Rows
 		{
-			x = i;
-			Row row = worksheet.getRow(++x);
-			if (row != null) {
-				for (int j = 0; j < colCount; j++) // Loop work for colNum
-				{
-					Cell cell = row.getCell(j);
-					if (cell == null)
-						data[i][j] = ""; // if it get Null value it pass no data
-					else {
-						String value = formatter.formatCellValue(cell);
-						data[i][j] = value; // This formatter get all values as string i.e integer, float all type
-											// data value
-					}
-				}
+			Map<Object, Object> dataMap = new HashMap<>();
+			for (int j = 0; j < lastCellNum; j++) // Loop work for colNum
+			{
+				Cell cell = worksheet.getRow(i + 1).getCell(j);
+				String value = (cell == null) ? "" : formatter.formatCellValue(cell);
+				dataMap.put(worksheet.getRow(0).getCell(j).toString(), value);
 			}
+			data[i][0] = dataMap;
 		}
 
-		workbook.close();
 		return data;
 	}
 

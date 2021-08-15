@@ -7,7 +7,8 @@ package com.feederapi.interview.utility;
  */
 public class Constants {
 	
-	public static final String INPUT_EXCEL_FILE_PATH = System.getProperty("user.dir") + "/src/test/resources/InputData.xlsx";
+	public static final String INPUT_EXCEL_FILE_NAME = "ExcelInputData.xlsx";
+	public static final String CONFIG_PROPERTIES_FILE_NAME="config.properties";
 	public static final String GET_PER_QUERY_PARAM = "per";
 	public static final String GET_PAGE_QUERY_PARAM = "page";
 	public static final String GET_FILTER_QUERY_PARAM = "filter";
