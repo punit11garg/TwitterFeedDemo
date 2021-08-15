@@ -13,4 +13,4 @@
 1. Take the checkout of master branch into local machine.
    1. In case not able to take checkout, download the zip file of repo from **Code > Download zip** option and unzip the same.
 2. Open Terminal/Command Prompt and navigate to root directory (**twitter-feed-api**) of the downloaded code. Execute the following command to execute the test cases: **mvn clean install test**
-3. All test should pass and report can be accessed at **<root-directory>/test-output/ExtentReport.html**
+3. All test should pass and report can be accessed at **twitter-feed-api/test-output/ExtentReport.html**
