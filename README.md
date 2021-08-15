@@ -7,9 +7,9 @@
 4. Logging is done using log4j.
 
 **Prerequisite to execute the test cases**
-1. Java (8 or above), Maven must be installed and set in classpath on the machine before running this project.
+1. [JDK](https://www.oracle.com/in/java/technologies/javase/javase-jdk8-downloads.html#license-lightbox) (8 or above), [Maven](https://mkyong.com/maven/how-to-install-maven-in-windows/) must be installed and set in classpath on the machine before running this project.
 
 **Steps to execute test cases**
 1. Take the checkout of master branch into local machine.
-2. Navigate to root directory (tweeter-feed-api) and execute : **mvn clean install test**
+2. Navigate to root directory (tweeter-feed-api) and execute the following command: **mvn clean install test**
 3. All test should pass and report can be accessed at **<root-directory/test-output/ExtentReport.html**
