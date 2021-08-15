@@ -7,7 +7,13 @@
 4. Logging is done using log4j.
 
 **Prerequisite to execute the test cases**
-1. [JDK](https://www.oracle.com/in/java/technologies/javase/javase-jdk8-downloads.html#license-lightbox) and [Maven](https://mkyong.com/maven/how-to-install-maven-in-windows/) must be installed and set in classpath (install the packages supported by the local machine OS) on the machine before running this project.
+1. Install & configure Java and Maven using the following links as per the OS.
+   1. For windows:
+      [Java 8](https://www.oracle.com/in/java/technologies/javase/javase-jdk8-downloads.html) and [set classpath](https://mkyong.com/java/how-to-set-java_home-on-windows-10/)
+      [Maven](https://mkyong.com/maven/how-to-install-maven-in-windows/)
+    2. For Mac
+      [Java 8](https://mkyong.com/java/how-to-install-java-on-mac-osx/)
+      [Maven](https://mkyong.com/maven/install-maven-on-mac-osx/)
 
 **Steps to execute test cases**
 1. Take the checkout of master branch into local machine.
