@@ -7,7 +7,7 @@
 4. Logging is done using log4j.
 
 **Prerequisite to execute the test cases**
-Java (8 or above), Maven must be installed and set in classpath on the machine before running this project.
+1. Java (8 or above), Maven must be installed and set in classpath on the machine before running this project.
 
 **Steps to execute test cases**
 1. Take the checkout of master branch into local machine.
