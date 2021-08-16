@@ -1,4 +1,4 @@
-package com.feederapi.interview.utility;
+package com.feederapi.interview.common.utility;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -17,13 +17,13 @@ import org.apache.log4j.Logger;
  * @author PUNIT GARG
  *
  */
-public class TestUtil {
+public class CommonUtils {
 
-	static Logger log = Logger.getLogger(TestUtil.class.getName());
+	static Logger log = Logger.getLogger(CommonUtils.class.getName());
 
 	private static Properties testProperties = null;
 	private static final String DATE_FORMAT = "yyyy-MM-dd";
-	static ClassLoader classLoader = TestUtil.class.getClassLoader();
+	static ClassLoader classLoader = CommonUtils.class.getClassLoader();
 		
 
 	/**

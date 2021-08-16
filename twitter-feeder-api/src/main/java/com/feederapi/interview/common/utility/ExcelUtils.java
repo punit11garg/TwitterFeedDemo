@@ -1,4 +1,4 @@
-package com.feederapi.interview.test.util;
+package com.feederapi.interview.common.utility;
 
 import java.io.File;
 import java.io.IOException;
@@ -13,8 +13,6 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 
-import com.feederapi.interview.utility.Constants;
-
 /**
  * Excel utility class which will have all common methods for reading/writing
  * excel
@@ -22,11 +20,11 @@ import com.feederapi.interview.utility.Constants;
  * @author PUNIT GARG
  *
  */
-public class ExcelUtil {
+public class ExcelUtils {
 
 	public static Workbook workbook;
 	public static Sheet worksheet;
-	static ClassLoader classLoader = ExcelUtil.class.getClassLoader();
+	static ClassLoader classLoader = ExcelUtils.class.getClassLoader();
 	
 
 	/**

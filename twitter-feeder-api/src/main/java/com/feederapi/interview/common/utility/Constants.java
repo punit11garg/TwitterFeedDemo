@@ -1,4 +1,4 @@
-package com.feederapi.interview.utility;
+package com.feederapi.interview.common.utility;
 
 /**
  * Constant class to store input file path and Get query param.

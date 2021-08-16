@@ -1,4 +1,4 @@
-package com.feederapi.interview.test.util;
+package com.feederapi.interview.test.utility;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -19,8 +19,9 @@ import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.ChartLocation;
 import com.aventstack.extentreports.reporter.configuration.Theme;
-import com.feederapi.interview.utility.Constants;
-import com.feederapi.interview.utility.RestAssuredUtil;
+import com.feederapi.interview.common.utility.CommonUtils;
+import com.feederapi.interview.common.utility.Constants;
+import com.feederapi.interview.common.utility.RestAssuredUtil;
 
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
@@ -42,16 +43,17 @@ public class BaseTest {
 
 	/**
 	 * Set the extent report parameters
+	 * @throws IOException 
 	 * 
 	 * @throws URISyntaxException
 	 */
 	@BeforeSuite
-	public void suitelevelsetup() {
+	public void suitelevelsetup() throws IOException, URISyntaxException {
 		htmlReporter = new ExtentHtmlReporter(Constants.EXTENT_REPORT_FILE);
 		extent = new ExtentReports();
 		extent.attachReporter(htmlReporter);
 		extent.setSystemInfo("Environment", "QA");
-		extent.setSystemInfo("Created By", "Punit Garg");
+		extent.setSystemInfo("Test API Base Path", CommonUtils.getProperty("baseUri") + CommonUtils.getProperty("basePath"));
 
 		htmlReporter.config().setChartVisibilityOnOpen(true);
 		htmlReporter.config().setDocumentTitle("Automation Test Report");

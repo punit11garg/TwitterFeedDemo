@@ -10,11 +10,11 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import com.feederapi.interview.test.util.BaseTest;
-import com.feederapi.interview.test.util.ExcelUtil;
-import com.feederapi.interview.test.util.ValidateResponse;
-import com.feederapi.interview.utility.Constants;
-import com.feederapi.interview.utility.RestAssuredUtil;
+import com.feederapi.interview.common.utility.Constants;
+import com.feederapi.interview.common.utility.ExcelUtils;
+import com.feederapi.interview.common.utility.RestAssuredUtil;
+import com.feederapi.interview.test.utility.BaseTest;
+import com.feederapi.interview.test.utility.ValidateResponse;
 
 import io.restassured.response.Response;
 
@@ -57,7 +57,7 @@ public class TweetCountTest extends BaseTest {
 	private Object[][] dataProvFunc() throws IOException, URISyntaxException {
 
 		// Read the input data from InputData.xlsx workbook
-		return ExcelUtil.dataSupplier(Constants.GET_PER_QUERY_PARAM);
+		return ExcelUtils.dataSupplier(Constants.GET_PER_QUERY_PARAM);
 	}
 
 }

@@ -1,5 +1,5 @@
 
-package com.feederapi.interview.test.util;
+package com.feederapi.interview.test.utility;
 
 import java.util.Map;
 import java.util.Set;
@@ -8,8 +8,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.testng.Assert;
 
-import com.feederapi.interview.utility.Constants;
-import com.feederapi.interview.utility.RestAssuredUtil;
+import com.feederapi.interview.common.utility.Constants;
+import com.feederapi.interview.common.utility.RestAssuredUtil;
 
 import io.restassured.response.Response;
 

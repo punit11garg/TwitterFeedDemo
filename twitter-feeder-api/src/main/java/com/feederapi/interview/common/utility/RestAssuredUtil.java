@@ -1,4 +1,4 @@
-package com.feederapi.interview.utility;
+package com.feederapi.interview.common.utility;
 
 import static io.restassured.RestAssured.given;
 
@@ -22,12 +22,12 @@ public class RestAssuredUtil {
 
 	// Sets Base URI
 	public static void setBaseURI() throws IOException, URISyntaxException {
-		RestAssured.baseURI = TestUtil.getProperty("baseUri");
+		RestAssured.baseURI = CommonUtils.getProperty("baseUri");
 	}
 
 	// Sets base path
 	public static void setBasePath() throws IOException, URISyntaxException{
-		RestAssured.basePath = TestUtil.getProperty("basePath");
+		RestAssured.basePath = CommonUtils.getProperty("basePath");
 	}
 
 	public static RequestSpecification getRequestSpec() {
