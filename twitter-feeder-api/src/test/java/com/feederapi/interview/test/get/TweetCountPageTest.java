@@ -46,7 +46,7 @@ public class TweetCountPageTest extends BaseTest {
 	public void tweetCountPerPageTest(Map<Object, Object> dataInputMap) throws JSONException {
 		log.info("Executing tweetCountAndPageTest for following test input: [{" + dataInputMap.keySet().toString() + ":" + dataInputMap.values().toString() + "}]");
 		Response response = RestAssuredUtil.getResponse(RestAssuredUtil.setQueryParamsHashMap(request, dataInputMap));
-		ValidateResponse.validateResponseNew(response, dataInputMap);
+		ValidateResponse.validateResponse(response, dataInputMap);
 	}
 
 	// To execute the test case for different set of data

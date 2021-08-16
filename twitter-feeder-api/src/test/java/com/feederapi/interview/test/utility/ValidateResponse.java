@@ -33,7 +33,7 @@ public class ValidateResponse {
 	 * @param dataInputMap
 	 * @throws JSONException
 	 */
-	public static void validateResponseNew(Response response, Map<Object, Object> dataInputMap) throws JSONException {
+	public static void validateResponse(Response response, Map<Object, Object> dataInputMap) throws JSONException {
 		
 		//Validate response code to 200
 		validateResponseStatusCode(response);
