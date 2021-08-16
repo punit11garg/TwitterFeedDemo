@@ -26,7 +26,7 @@ public class RestAssuredUtil {
 	}
 
 	// Sets base path
-	public static void setBasePath() throws IOException, URISyntaxException{
+	public static void setBasePath() throws IOException, URISyntaxException {
 		RestAssured.basePath = CommonUtils.getProperty("basePath");
 	}
 
@@ -41,15 +41,13 @@ public class RestAssuredUtil {
 	}
 
 	// Sets query params in request
-	public static RequestSpecification setQueryParamsHashMap(RequestSpecification request,
+	public static RequestSpecification setQueryParams(RequestSpecification request,
 			Map<Object, Object> dataInputMap) {
 
-		Set<Object> keys = dataInputMap.keySet();
+		dataInputMap.forEach((k, v) -> {
+			request.queryParam(k.toString(), v.toString());
+		});
 
-		// Set each query param with value from input data sheet
-		for (Object key : keys) {
-			request.queryParam(key.toString(), dataInputMap.get(key).toString());
-		}
 		return request;
 	}
 
@@ -96,9 +94,9 @@ public class RestAssuredUtil {
 	public static int getItemsLength(JSONObject JSONResponseBody) throws JSONException {
 		return JSONResponseBody.getJSONObject("posts").getJSONArray("items").length();
 	}
-	
+
 	public static String getSource(JSONObject JSONResponseBody) throws JSONException {
 		return JSONResponseBody.getJSONArray("sources").getJSONObject(0).getString("source");
-		
+
 	}
 }

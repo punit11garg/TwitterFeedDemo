@@ -47,7 +47,7 @@ public class TweetCountTest extends BaseTest {
 	@Test(dataProvider = "test-data", description = "Test the number of twits (max 100) to be displayed per page")
 	public void tweetCountPerPageTest(Map<Object, Object> dataInputMap) throws JSONException {
 		log.info("Executing tweetCountPerPageTest for following test input: [{" + dataInputMap.keySet().toString() + ":" + dataInputMap.values().toString() + "}]");
-		Response response = RestAssuredUtil.getResponse(RestAssuredUtil.setQueryParamsHashMap(request, dataInputMap));
+		Response response = RestAssuredUtil.getResponse(RestAssuredUtil.setQueryParams(request, dataInputMap));
 		ValidateResponse.validateResponse(response, dataInputMap);
 
 	}

@@ -48,7 +48,7 @@ public class TweetFilterTest extends BaseTest {
 	@Test(dataProvider = "test-data", description = "Test the filtering of response on social account feed basis.")
 	public void tweetFilterTest(Map<Object, Object> dataInputMap) throws JSONException {
 		log.info("Executing tweetFilterTest for following test input: [{" + dataInputMap.keySet().toString() + ":" + dataInputMap.values().toString() + "}]");
-		Response response = RestAssuredUtil.getResponse(RestAssuredUtil.setQueryParamsHashMap(request, dataInputMap));
+		Response response = RestAssuredUtil.getResponse(RestAssuredUtil.setQueryParams(request, dataInputMap));
 		ValidateResponse.validateResponse(response, dataInputMap);
 	}
 
